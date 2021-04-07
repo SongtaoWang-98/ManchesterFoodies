@@ -1,9 +1,7 @@
 package com.team2.service;
 
-import com.team2.entity.Person;
-
-import java.util.List;
+import com.team2.vo.HomeVO;
 
 public interface HomeService {
-    List<Person> findAll();
+    HomeVO findAllRestaurants();
 }
