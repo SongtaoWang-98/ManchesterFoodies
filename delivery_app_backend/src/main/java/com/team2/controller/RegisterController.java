@@ -1,11 +1,12 @@
 package com.team2.controller;
 
+import com.team2.form.LoginForm;
+import com.team2.form.RegisterForm;
 import com.team2.service.LoginService;
+import com.team2.util.ResultVOUtil;
+import com.team2.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * name: RegisterController
@@ -24,8 +25,10 @@ public class RegisterController {
      * param: String username, String password, String tel
      * return: boolean
      */
-    @PostMapping()
-    public boolean register(String username, String password, String tel){
-        return loginService.registerByName(username, password, tel);
+    @PostMapping
+    public ResultVO register(@RequestBody RegisterForm registerForm){
+        System.out.println(registerForm.toString());
+        return ResultVOUtil.success(loginService.registerByName(registerForm.getUserName(),
+                registerForm.getUserPassword(), registerForm.getUserTel()));
     }
 }

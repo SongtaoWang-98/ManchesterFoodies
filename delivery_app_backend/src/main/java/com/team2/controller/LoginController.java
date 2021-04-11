@@ -1,6 +1,10 @@
 package com.team2.controller;
 
+import com.team2.enums.LoginCode;
+import com.team2.form.LoginForm;
 import com.team2.service.LoginService;
+import com.team2.util.ResultVOUtil;
+import com.team2.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
  * name: LoginController
  * description: It is the entrance of the app, and it provides user login and register.
  */
-@CrossOrigin
 @RestController
+@CrossOrigin
 @RequestMapping("/login")
 public class LoginController {
 
@@ -22,9 +26,12 @@ public class LoginController {
      * param: String username, String password
      * return: boolean
      */
-    @PostMapping()
-    public boolean login(String username, String password) {
-        return loginService.loginByName(username, password);
+    @PostMapping
+    public ResultVO login(@RequestBody LoginForm loginForm) {
+        System.out.println(loginForm.toString());
+        LoginCode code = loginService.loginByName(loginForm.getUserName(), loginForm.getUserPassword());
+        if(code.getCode()==200) return ResultVOUtil.success(loginForm.getUserName());
+        else return ResultVOUtil.fail(code.getMessage());
     }
 
 }

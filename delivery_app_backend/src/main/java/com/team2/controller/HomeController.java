@@ -1,7 +1,9 @@
 package com.team2.controller;
 
 import com.team2.service.HomeService;
+import com.team2.util.ResultVOUtil;
 import com.team2.vo.HomeVO;
+import com.team2.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,8 +29,9 @@ public class HomeController {
      * return: HomeVO
      */
     @GetMapping()
-    public HomeVO index(){
-        return homeService.findAllRestaurants();
+    public ResultVO index(){
+        System.out.println(homeService.findAllRestaurants().toString());
+        return ResultVOUtil.success(homeService.findAllRestaurants());
     }
 
 }

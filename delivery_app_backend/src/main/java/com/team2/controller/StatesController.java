@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
  * name: StatesController
  * description: Show the details and current state of the order.
  */
-@CrossOrigin
 @RestController
 @RequestMapping("/states")
 public class StatesController {

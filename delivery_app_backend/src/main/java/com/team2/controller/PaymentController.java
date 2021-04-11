@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
  * name: PaymentController
  * description: It is used for address setting and payment.
  */
-@CrossOrigin
 @RestController
 @RequestMapping("/payment")
 public class PaymentController {

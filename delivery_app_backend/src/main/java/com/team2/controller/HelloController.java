@@ -1,6 +1,5 @@
 package com.team2.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
  * name: HelloController
  * description: It is the simple demo of the app, output hello world.
  */
-@CrossOrigin
 @RestController
 @RequestMapping("/hello")
 public class HelloController {
@@ -19,8 +17,9 @@ public class HelloController {
      * param:
      * return: String
      */
-    @GetMapping()
+    @GetMapping
     public String hello() {
+        System.out.println("2222");
         return "Hello World";
     }
 }
