@@ -20,6 +20,7 @@ public class LoginServiceImplTest {
     @Test
     public void loginByName() {
         assertTrue(loginService.loginByName("Stewart", "123"));
+        assertFalse(loginService.loginByName("Stewart","111"));
     }
 
     @Test
