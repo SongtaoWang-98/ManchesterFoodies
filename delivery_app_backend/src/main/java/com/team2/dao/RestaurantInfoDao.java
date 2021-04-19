@@ -5,5 +5,6 @@ import com.team2.entity.RestaurantInfo;
 import java.util.List;
 
 public interface RestaurantInfoDao {
-    public List<RestaurantInfo> findAllRestaurants();
+    List<RestaurantInfo> findAllRestaurants();
+    RestaurantInfo findRestaurantById(Integer restaurantId);
 }

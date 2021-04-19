@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team2.dao.AddressInfoDao">
+    <insert id="save" parameterType="com.team2.entity.AddressInfo">
+        insert into address_info values(null, #{userId}, #{address}, #{postcode}, #{addressTel})
+    </insert>
+
+    <delete id="deleteByAddressId" parameterType="Integer">
+        delete from address_info where address_id = #{addressId}
+    </delete>
+
+    <select id="findAllByUserId" parameterType="Integer" resultType="com.team2.entity.AddressInfo">
+        select * from address_info where user_id = #{userId}
+    </select>
+</mapper>

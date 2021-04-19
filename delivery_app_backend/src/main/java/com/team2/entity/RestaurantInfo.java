@@ -14,4 +14,6 @@ public class RestaurantInfo {
     private Double restaurantStars;
     private String restaurantStyle;
     private String restaurantImg;
+    private String restaurantDescription;
+    private Double discount;
 }

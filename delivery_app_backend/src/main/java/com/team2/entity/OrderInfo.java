@@ -3,6 +3,7 @@ package com.team2.entity;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * name: OrderInfo
@@ -12,9 +13,9 @@ import java.math.BigDecimal;
 public class OrderInfo {
     private Integer orderId;
     private Integer userId;
-    private String address;
+    private Integer cartId;
     private Integer restaurantId;
-    private Integer dishId;
-    private String deliveryMethod;
-    private BigDecimal price;
+    private Integer addressId;
+    private String paymentMethod;
+    private Date createTime;
 }

@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.team2.service.impl.MenuServiceImplTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.052 s - in com.team2.service.impl.MenuServiceImplTest

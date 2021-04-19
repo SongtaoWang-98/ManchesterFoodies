@@ -12,8 +12,10 @@ import java.math.BigDecimal;
 public class DishInfo {
     private Integer dishId;
     private Integer restaurantId;
+    private String dishGroup;
     private String dishName;
+    private String dishDescription;
     private BigDecimal dishPrice;
-    private String dishTaste;
+    private String dishTrend;
     private String dishImg;
 }

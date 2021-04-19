@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 /**
  * name: RestaurantVO
  * description: To show detailed information of each restaurant.
@@ -19,10 +21,16 @@ public class RestaurantVO {
     private String restaurantName;
     @JsonProperty("distance")
     private Double restaurantDistance;
+    @JsonProperty("delivery_fee")
+    private BigDecimal deliveryFee;
     @JsonProperty("stars")
     private Double restaurantStars;
+    @JsonProperty("comment")
+    private String restaurantComment;
     @JsonProperty("style")
     private String restaurantStyle;
     @JsonProperty("img")
     private String restaurantImg;
+    @JsonProperty("discount")
+    private Double discount;
 }

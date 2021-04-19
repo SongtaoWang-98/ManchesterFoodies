@@ -5,11 +5,19 @@
         select * from user_info where user_name = #{name}
     </select>
 
-    <select id="count" resultType="int">
+    <select id="count" resultType="Integer">
         select count(user_id) from user_info
     </select>
 
     <insert id="save" parameterType="com.team2.entity.UserInfo">
         insert into user_info values(#{userId},#{userName},#{userPassword},#{userTel})
     </insert>
+
+    <select id="findByUserId" parameterType="Integer" resultType="com.team2.entity.UserInfo">
+        select * from user_info where user_id = #{userId}
+    </select>
+
+    <update id="updateBalanceByUserId">
+        update user_info set user_balance = #{arg1} where user_id = #{arg0}
+    </update>
 </mapper>

@@ -4,4 +4,8 @@
     <select id="findAllRestaurants" resultType="RestaurantInfo">
         select * from restaurant_info
     </select>
+
+    <select id="findRestaurantById"  parameterType="Integer" resultType="RestaurantInfo">
+        select * from restaurant_info where restaurant_id = #{restaurantId}
+    </select>
 </mapper>

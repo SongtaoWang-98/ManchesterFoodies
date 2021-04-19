@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -15,6 +16,28 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MenuVO {
-    @JsonProperty("dishes")
-    List<DishVO> dishVOList;
+    @JsonProperty("id")
+    private Integer restaurantId;
+    @JsonProperty("name")
+    private String restaurantName;
+    @JsonProperty("distance")
+    private Double restaurantDistance;
+    @JsonProperty("delivery_fee")
+    private BigDecimal deliveryFee;
+    @JsonProperty("stars")
+    private Double restaurantStars;
+    @JsonProperty("comment")
+    private String restaurantComment;
+    @JsonProperty("style")
+    private String restaurantStyle;
+    @JsonProperty("img")
+    private String restaurantImg;
+    @JsonProperty("description")
+    private String restaurantDescription;
+    @JsonProperty("discount")
+    private Double discount;
+    @JsonProperty("estimate_time")
+    private String estimateTime;
+    @JsonProperty("groups")
+    List<DishGroupVO> dishGroupVOList;
 }

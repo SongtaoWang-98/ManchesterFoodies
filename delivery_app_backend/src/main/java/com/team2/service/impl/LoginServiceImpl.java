@@ -2,9 +2,9 @@ package com.team2.service.impl;
 
 import com.team2.dao.UserInfoDao;
 import com.team2.entity.UserInfo;
-import com.team2.enums.LoginCode;
-import com.team2.enums.RegisterCode;
+import com.team2.enums.UserCode;
 import com.team2.service.LoginService;
+import com.team2.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,28 +15,37 @@ public class LoginServiceImpl implements LoginService {
     private UserInfoDao userInfoDao;
 
     @Override
-    public LoginCode loginByName(String username, String password) {
+    public UserVO loginByName(String username, String password) {
         UserInfo userInfo = userInfoDao.findByName(username);
-        if (userInfo == null) return LoginCode.USER_NOT_EXISTS;
+        UserCode userCode;
+        if (userInfo == null) {
+            userCode =  UserCode.USER_NOT_EXISTS;
+        }
         else {
             if(userInfo.getUserPassword().equals(password)){
-            System.out.println(userInfo.getUserPassword().equals(password));
-            return LoginCode.SUCCESS;
+            userCode = UserCode.SUCCESS;
+            return new UserVO(userInfo.getUserId(), userInfo.getUserName(), userCode.getMessage());
             }
-            else return LoginCode.PASSWORD_ERROR;
+            else userCode =  UserCode.PASSWORD_ERROR;
         }
+        return new UserVO(null, null, userCode.getMessage());
     }
 
     @Override
-    public RegisterCode registerByName(String username, String password, String tel) {
+    public UserVO registerByName(String username, String password, String tel) {
         int userCount = userInfoDao.count();
-        if(userInfoDao.findByName(username) != null) return RegisterCode.USERNAME_EXISTS;
+        UserCode userCode;
+        if(userInfoDao.findByName(username) != null) {
+            userCode =  UserCode.USERNAME_EXISTS;
+            return new UserVO(null, null, userCode.getMessage());
+        }
         UserInfo userInfo = new UserInfo();
         userInfo.setUserId(userCount + 1);
         userInfo.setUserName(username);
         userInfo.setUserPassword(password);
         userInfo.setUserTel(tel);
         userInfoDao.save(userInfo);
-        return RegisterCode.SUCCESS;
+        userCode =  UserCode.SUCCESS;
+        return new UserVO(userInfo.getUserId(), userInfo.getUserName(), userCode.getMessage());
     }
 }

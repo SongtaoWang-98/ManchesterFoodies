@@ -19,10 +19,12 @@ public class DishVO {
     private Integer dishId;
     @JsonProperty("name")
     private String dishName;
+    @JsonProperty("description")
+    private String dishDescription;
     @JsonProperty("price")
     private BigDecimal dishPrice;
-    @JsonProperty("taste")
-    private String dishTaste;
+    @JsonProperty("trend")
+    private String dishTrend;
     @JsonProperty("img")
     private String dishImg;
 }

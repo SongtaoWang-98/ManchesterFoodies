@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team2.dao.UserInfoDao">
+    <select id="findByName" parameterType="java.lang.String" resultType="com.team2.entity.UserInfo">
+        select * from user_info where user_name = #{name}
+    </select>
+
+    <select id="count" resultType="int">
+        select count(user_id) from user_info
+    </select>
+
+    <insert id="save" parameterType="com.team2.entity.UserInfo">
+        insert into user_info values(#{userId},#{userName},#{userPassword},#{userTel})
+    </insert>
+</mapper>

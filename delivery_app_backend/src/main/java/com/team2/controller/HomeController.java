@@ -19,18 +19,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/home")
 public class HomeController {
+
     @Autowired
     private HomeService homeService;
 
     /**
-     * url: localhost:8080/delivery_app/home
+     * url: localhost:8383/delivery_app/home
      * description: Query and show all the information of restaurants from the database.
      * param:
      * return: HomeVO
      */
     @GetMapping()
     public ResultVO index(){
-        System.out.println(homeService.findAllRestaurants().toString());
         return ResultVOUtil.success(homeService.findAllRestaurants());
     }
 

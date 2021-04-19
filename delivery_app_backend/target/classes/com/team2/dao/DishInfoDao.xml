@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team2.dao.DishInfoDao">
-    <select id="findByRestaurant" resultType="DishInfo">
-        select * from dish_info where restaurant_id = #{restaurantId}
+    <select id="findDishGroups" resultType="String">
+        select distinct dish_group from dish_info
+    </select>
+
+    <select id="findByRestaurantIdAndDishGroup" resultType="DishInfo">
+        select * from dish_info where restaurant_id = #{arg0} and dish_group = #{arg1}
+    </select>
+
+    <select id="findByDishId" parameterType="Integer" resultType="DishInfo">
+        select * from dish_info where dish_id = #{arg0}
     </select>
 </mapper>
