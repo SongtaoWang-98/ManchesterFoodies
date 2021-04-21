@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.math.BigDecimal;
+
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -17,8 +19,19 @@ public class OrderServiceImplTest {
     OrderService orderService;
 
     @Test
-    public void createOrder() {
-        System.out.println(orderService.createOrder(1,4,"Card"));
+    public void checkBalanceTest() {
+        BigDecimal balance = orderService.checkBalance(1);
+        System.out.println(balance);
+    }
+
+    @Test
+    public void createOrderTest() {
+        //create an order
+    }
+
+    @Test
+    public void viewAllOrdersTest() {
+        System.out.println(orderService.viewAllOrders(1));
     }
 
 }

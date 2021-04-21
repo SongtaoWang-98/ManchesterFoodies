@@ -6,9 +6,9 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public interface UserInfoDao {
+    Integer findMaxId();
     UserInfo findByName(String name);
     void save(UserInfo userInfo);
-    Integer count();
     UserInfo findByUserId(Integer userId);
     void updateBalanceByUserId(Integer userId, BigDecimal balance);
 }

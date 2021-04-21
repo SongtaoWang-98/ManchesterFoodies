@@ -2,6 +2,10 @@ package com.team2.entity;
 
 import lombok.Data;
 
+/**
+ * name: UserCart
+ * description: Information about users' carts.
+ */
 @Data
 public class UserCart {
     private Integer id;

@@ -1,6 +1,6 @@
-package com.team2.dao;
+package com.team2.service.impl;
 
-import com.team2.entity.UserCart;
+import com.team2.service.AddressService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,16 +11,23 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:springmvc.xml","classpath:mybatisConfig.xml","classpath:spring.xml"})
-public class UserCartDaoTest {
+public class AddressServiceImplTest {
 
     @Autowired
-    UserCartDao userCartDao;
+    private AddressService addressService;
 
     @Test
-    public void test() {
-//        System.out.println(userCartDao.findMaxPaidCartId());
-        System.out.println(userCartDao.findUnPaidCartIdByUserId(1));
-
+    public void addAddressTest() {
+        //add an address
     }
 
+    @Test
+    public void deleteAddressTest() {
+        //delete an address
+    }
+
+    @Test
+    public void viewAddressTest() {
+        System.out.println(addressService.viewAddresses(1));
+    }
 }

@@ -7,6 +7,10 @@ import com.team2.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * name: AddressController
+ * description: Manage addresses of users.
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("/address")

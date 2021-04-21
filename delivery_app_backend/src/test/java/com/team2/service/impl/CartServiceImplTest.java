@@ -15,10 +15,30 @@ import static org.junit.Assert.*;
 public class CartServiceImplTest {
 
     @Autowired
-    CartService cartService;
+    private CartService cartService;
 
     @Test
-    public void test() {
+    public void addItemTest() {
+        //add
+    }
+
+    @Test
+    public void deleteItemTest() {
+        //delete
+    }
+
+    @Test
+    public void deleteAllInCartTest() {
+        //delete all
+    }
+
+    @Test
+    public void updateItemTest() {
+        //update
+    }
+
+    @Test
+    public void viewCartTest() {
         System.out.println(cartService.viewCart(2));
     }
 

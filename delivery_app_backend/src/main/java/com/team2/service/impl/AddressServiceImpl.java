@@ -24,6 +24,7 @@ public class AddressServiceImpl implements AddressService {
     public StatusCode addAddress(AddressForm addressForm) {
         AddressInfo addressInfo = new AddressInfo();
         addressInfo.setUserId(addressForm.getUserId());
+        addressInfo.setName(addressForm.getName());
         addressInfo.setAddress(addressForm.getAddress());
         addressInfo.setPostcode(addressForm.getPostcode());
         addressInfo.setAddressTel(addressForm.getTel());
@@ -44,6 +45,7 @@ public class AddressServiceImpl implements AddressService {
         for(AddressInfo addressInfo: addressInfoList) {
             addressVOList.add(new AddressVO(
                     addressInfo.getAddressId(),
+                    addressInfo.getName(),
                     addressInfo.getAddress(),
                     addressInfo.getPostcode(),
                     addressInfo.getAddressTel()

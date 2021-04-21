@@ -18,4 +18,5 @@ public class OrderInfo {
     private Integer addressId;
     private String paymentMethod;
     private Date createTime;
+    private BigDecimal orderTotal;
 }

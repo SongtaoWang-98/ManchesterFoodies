@@ -28,8 +28,11 @@ public class RegisterController {
      */
     @PostMapping
     public ResultVO register(@RequestBody RegisterForm registerForm){
+        String userType;
+        if(!registerForm.getIsVip()) userType = "General users";
+        else userType = "Membership";
         UserVO userVO = loginService.registerByName(registerForm.getUserName(), registerForm.getUserPassword(),
-                registerForm.getUserTel());
+                registerForm.getUserTel(), userType);
         if(userVO.getCodeMsg().equals("SUCCESS")) {
             return ResultVOUtil.success(userVO);
         }
@@ -37,5 +40,4 @@ public class RegisterController {
             return ResultVOUtil.fail(userVO);
         }
     }
-
 }

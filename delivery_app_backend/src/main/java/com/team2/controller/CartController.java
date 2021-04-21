@@ -8,6 +8,10 @@ import com.team2.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * name: CartController
+ * description: Manage carts of users.
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("/cart")

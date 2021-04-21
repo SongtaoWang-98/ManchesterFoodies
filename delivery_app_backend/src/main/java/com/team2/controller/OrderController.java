@@ -7,6 +7,10 @@ import com.team2.vo.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * name: OrderController
+ * description: Manage orders of users.
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("/order")
@@ -14,6 +18,11 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
+
+    @GetMapping("/balance")
+    public ResultVO checkBalance(Integer userId) {
+        return ResultVOUtil.success(orderService.checkBalance(userId));
+    }
 
     @PostMapping("/create")
     public ResultVO createOrder(Integer userId, Integer addressId, String paymentMethod) {
@@ -24,11 +33,6 @@ public class OrderController {
         else {
             return ResultVOUtil.fail(statusCode.getMsg());
         }
-    }
-
-    @GetMapping
-    public ResultVO viewCurrentOrder(Integer userId) {
-        return ResultVOUtil.success(orderService.viewCurrentOrder(userId));
     }
 
     @GetMapping("/all")

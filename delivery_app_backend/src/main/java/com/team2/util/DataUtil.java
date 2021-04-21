@@ -1,10 +1,15 @@
 package com.team2.util;
 
+import com.team2.pattern.strategy.DeliveryFeeContext;
+import com.team2.pattern.strategy.GeneralDeliveryFee;
+
 import java.math.BigDecimal;
 
 public class DataUtil {
     public static BigDecimal calDeliveryFee(double distance) {
-        return BigDecimal.valueOf(distance * 2.5);
+        DeliveryFeeContext context = new DeliveryFeeContext();
+        context.setCalculateMethod(new GeneralDeliveryFee());
+        return context.CalculateFee(BigDecimal.valueOf(1), distance);
     }
 
     public static String evalComment(double stars) {

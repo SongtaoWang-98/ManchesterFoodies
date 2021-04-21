@@ -30,10 +30,10 @@
     </update>
 
     <select id="findAllInCart" parameterType="Integer" resultType="com.team2.entity.UserCart">
-        select * from user_cart where cart_id = #{cartId};
+        select * from user_cart where cart_id = #{cartId}
     </select>
 
     <update id="updatePaid" parameterType="Integer">
-        update user_cart set is_paid = true
+        update user_cart set is_paid = true where cart_id =  #{cartId}
     </update>
 </mapper>

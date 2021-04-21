@@ -5,5 +5,5 @@ import com.team2.vo.UserVO;
 
 public interface LoginService {
     UserVO loginByName(String username, String password);
-    UserVO registerByName(String username, String password, String tel);
+    UserVO registerByName(String username, String password, String tel, String userType);
 }

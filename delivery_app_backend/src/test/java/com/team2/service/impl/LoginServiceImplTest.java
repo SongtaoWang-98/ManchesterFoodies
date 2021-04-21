@@ -19,12 +19,11 @@ public class LoginServiceImplTest {
 
     @Test
     public void loginByName() {
-//        assertTrue(loginService.loginByName("Stewart", "123"));
-//        assertFalse(loginService.loginByName("Stewart","111"));
+        System.out.println(loginService.loginByName("1", "120"));
     }
 
-//    @Test
-//    public void registerByName() {
-//        assertTrue(loginService.registerByName("1","123","12345677"));
-//    }
+    @Test
+    public void registerByName() {
+//        loginService.registerByName("1","123","12345677","General user");
+    }
 }

@@ -15,4 +15,5 @@ public class UserInfo {
     private String userPassword;
     private String userTel;
     private BigDecimal userBalance;
+    private Boolean isVip;
 }

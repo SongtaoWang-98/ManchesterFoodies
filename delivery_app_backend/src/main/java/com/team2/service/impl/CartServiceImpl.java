@@ -3,10 +3,14 @@ package com.team2.service.impl;
 import com.team2.dao.DishInfoDao;
 import com.team2.dao.RestaurantInfoDao;
 import com.team2.dao.UserCartDao;
+import com.team2.dao.UserInfoDao;
 import com.team2.entity.DishInfo;
 import com.team2.entity.RestaurantInfo;
 import com.team2.entity.UserCart;
 import com.team2.enums.StatusCode;
+import com.team2.pattern.strategy.DeliveryFeeContext;
+import com.team2.pattern.strategy.GeneralDeliveryFee;
+import com.team2.pattern.strategy.VipDeliveryFee;
 import com.team2.service.CartService;
 import com.team2.util.DataUtil;
 import com.team2.vo.CartItemVO;
@@ -29,6 +33,9 @@ public class CartServiceImpl implements CartService {
 
     @Autowired
     private DishInfoDao dishInfoDao;
+
+    @Autowired
+    private UserInfoDao userInfoDao;
 
     @Override
     public StatusCode addItem(Integer userId, Integer dishId, Integer dishNum) {
@@ -76,6 +83,7 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
+
     public CartVO viewCart(Integer userId) {
         Integer cartMax = userCartDao.findUnPaidCartIdByUserId(userId);
         List<UserCart> userCartList = userCartDao.findAllInCart(cartMax);
@@ -99,8 +107,11 @@ public class CartServiceImpl implements CartService {
         }
         BigDecimal subtotal = total.multiply(BigDecimal.valueOf(restaurantInfo.getDiscount()));
         BigDecimal cutPrice = total.subtract(subtotal);
-        BigDecimal deliveryFee = DataUtil.calDeliveryFee(restaurantInfo.getRestaurantDistance());
-        if(subtotal.doubleValue() >= 30) deliveryFee = BigDecimal.valueOf(0);
+        DeliveryFeeContext context = new DeliveryFeeContext();
+        Boolean isVip = userInfoDao.findByUserId(userId).getIsVip();
+        if(isVip) context.setCalculateMethod(new VipDeliveryFee());
+        else context.setCalculateMethod(new GeneralDeliveryFee());
+        BigDecimal deliveryFee = context.CalculateFee(subtotal, restaurantInfo.getRestaurantDistance());
         BigDecimal orderTotal = subtotal.add(deliveryFee);
         return new CartVO(
                 restaurantInfo.getRestaurantName(),

@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 public class AddressVO {
     @JsonProperty("id")
     private Integer addressId;
+    @JsonProperty("name")
+    private String name;
     @JsonProperty("address")
     private String address;
     @JsonProperty("postcode")
