@@ -22,19 +22,6 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public UserVO loginByName(String username, String password) {
-//        UserInfo userInfo = userInfoDao.findByName(username);
-//        UserCode userCode;
-//        if (userInfo == null) {
-//            userCode =  UserCode.USER_NOT_EXISTS;
-//        }
-//        else {
-//            if(userInfo.getUserPassword().equals(password)){
-//            userCode = UserCode.SUCCESS;
-//            return new UserVO(userInfo.getUserId(), userInfo.getUserName(), userCode.getMessage());
-//            }
-//            else userCode =  UserCode.PASSWORD_ERROR;
-//        }
-//        return new UserVO(null, null, userCode.getMessage());
         return userVerifierProxy.verify(username, password);
     }
 
