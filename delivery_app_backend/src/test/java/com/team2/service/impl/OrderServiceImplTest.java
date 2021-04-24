@@ -26,7 +26,7 @@ public class OrderServiceImplTest {
 
     @Test
     public void createOrderTest() {
-        //create an order
+        orderService.createOrder(1,1,"card");
     }
 
     @Test

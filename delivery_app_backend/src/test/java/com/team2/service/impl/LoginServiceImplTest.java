@@ -24,6 +24,6 @@ public class LoginServiceImplTest {
 
     @Test
     public void registerByName() {
-//        loginService.registerByName("1","123","12345677","General user");
+        loginService.registerByName("1","123","12345677","General user");
     }
 }

@@ -19,22 +19,22 @@ public class CartServiceImplTest {
 
     @Test
     public void addItemTest() {
-        //add
+        cartService.addItem(1,1,5);
     }
 
     @Test
     public void deleteItemTest() {
-        //delete
+        cartService.deleteItem(10);
     }
 
     @Test
     public void deleteAllInCartTest() {
-        //delete all
+        cartService.deleteAllInCart(1);
     }
 
     @Test
     public void updateItemTest() {
-        //update
+        cartService.updateItem(1,1);
     }
 
     @Test

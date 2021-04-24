@@ -1,5 +1,6 @@
 package com.team2.service.impl;
 
+import com.team2.form.AddressForm;
 import com.team2.service.AddressService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,12 +19,18 @@ public class AddressServiceImplTest {
 
     @Test
     public void addAddressTest() {
-        //add an address
+        AddressForm addressForm = new AddressForm();
+        addressForm.setUserId(1);
+        addressForm.setName("babao");
+        addressForm.setAddress("Manchester");
+        addressForm.setPostcode("M156JG");
+        addressForm.setTel("7577383747");
+        addressService.addAddress(addressForm);
     }
 
     @Test
     public void deleteAddressTest() {
-        //delete an address
+        addressService.deleteAddress(7);
     }
 
     @Test
