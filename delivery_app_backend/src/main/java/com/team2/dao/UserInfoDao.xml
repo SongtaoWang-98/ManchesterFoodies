@@ -20,4 +20,8 @@
     <update id="updateBalanceByUserId">
         update user_info set user_balance = #{arg1} where user_id = #{arg0}
     </update>
+
+    <update id="updateIsVipByUserId">
+        update user_info set is_vip = true where user_id = #{arg0}
+    </update>
 </mapper>

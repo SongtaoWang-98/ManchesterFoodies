@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface OrderInfoDao {
     void save(OrderInfo orderInfo);
-    List<OrderInfo> findByUserId(Integer userId);
+    List<OrderInfo> findByUserIdOrderByTimeDesc(Integer userId);
 }

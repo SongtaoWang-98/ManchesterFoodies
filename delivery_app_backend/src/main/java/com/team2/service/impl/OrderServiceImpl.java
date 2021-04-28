@@ -72,6 +72,7 @@ public class OrderServiceImpl implements OrderService {
         orderInfo.setPaymentMethod(paymentMethod);
         orderInfo.setCreateTime(new Date());
         orderInfo.setOrderTotal(orderTotal);
+        if(addressId == null) return StatusCode.EMPTY_ADDRESS;
         if(paymentMethod.equals("balance")) {
             if (orderTotal.doubleValue() > userInfoDao.findByUserId(userId).getUserBalance().doubleValue()) {
                 return StatusCode.INSUFFICIENT_BALANCE;
@@ -88,18 +89,18 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrdersVO viewAllOrders(Integer userId) {
-        List<OrderInfo> orderInfoList = orderInfoDao.findByUserId(userId);
+        List<OrderInfo> orderInfoList = orderInfoDao.findByUserIdOrderByTimeDesc(userId);
         List<OrderVO> orderVOList = new ArrayList<>();
         StateContext stateContext = new StateContext();
         Date now = new Date();
         for(OrderInfo orderInfo: orderInfoList) {
             RestaurantInfo restaurantInfo = restaurantInfoDao.findRestaurantById(orderInfo.getRestaurantId());
             Date orderTime = orderInfo.getCreateTime();
-            if(now.before(new Date(orderTime.getTime() + 5 * 1000))) stateContext.setState(new PreparationState());
-            else if(now.before(new Date(orderTime.getTime() + 10 * 1000))) stateContext.setState(new PickupState());
-            else if(now.before(new Date(orderTime.getTime() + 15 * 1000))) stateContext.setState(new OnTheWayState());
+            if(now.before(new Date(orderTime.getTime() + 10 * 1000))) stateContext.setState(new PreparationState());
+            else if(now.before(new Date(orderTime.getTime() + 20 * 1000))) stateContext.setState(new PickupState());
+            else if(now.before(new Date(orderTime.getTime() + 30 * 1000))) stateContext.setState(new OnTheWayState());
             else stateContext.setState(new DeliveredState());
-            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
             orderVOList.add(new OrderVO(
                     stateContext.showState(),
                     restaurantInfo.getRestaurantName(),

@@ -1,7 +1,6 @@
 package com.team2.vo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.team2.enums.UserCode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

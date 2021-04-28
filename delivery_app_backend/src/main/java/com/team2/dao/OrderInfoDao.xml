@@ -5,7 +5,7 @@
         insert into order_info values(null, #{userId}, #{cartId}, #{restaurantId}, #{addressId}, #{paymentMethod}, #{createTime}, #{orderTotal})
     </insert>
 
-    <select id="findByUserId" parameterType="Integer" resultType="com.team2.entity.OrderInfo">
-        select * from order_info where user_id = #{arg0}
+    <select id="findByUserIdOrderByTimeDesc" parameterType="Integer" resultType="com.team2.entity.OrderInfo">
+        select * from order_info where user_id = #{arg0} order by create_time desc
     </select>
 </mapper>

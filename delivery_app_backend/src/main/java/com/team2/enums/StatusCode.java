@@ -11,6 +11,8 @@ public enum StatusCode {
 
     INSUFFICIENT_BALANCE(2001,"Insufficient balance"),
 
+    EMPTY_ADDRESS(3001,"Address is empty"),
+
     EMPTY_CART(3001, "Empty"),
 
     FAIL(2001,"Fail");

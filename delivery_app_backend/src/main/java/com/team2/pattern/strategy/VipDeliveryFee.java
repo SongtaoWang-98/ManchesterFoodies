@@ -1,6 +1,7 @@
 package com.team2.pattern.strategy;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class VipDeliveryFee implements DeliveryFeeStrategy{
     @Override
@@ -14,6 +15,6 @@ public class VipDeliveryFee implements DeliveryFeeStrategy{
             else deliveryFee = BigDecimal.valueOf(distance - 2)
                         .multiply(BigDecimal.valueOf(4)).add(BigDecimal.valueOf(2.5));
         }
-        return deliveryFee;
+        return deliveryFee.setScale(2, RoundingMode.HALF_UP);
     }
 }

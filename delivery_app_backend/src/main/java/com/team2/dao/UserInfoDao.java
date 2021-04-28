@@ -11,4 +11,5 @@ public interface UserInfoDao {
     void save(UserInfo userInfo);
     UserInfo findByUserId(Integer userId);
     void updateBalanceByUserId(Integer userId, BigDecimal balance);
+    void updateIsVipByUserId(Integer userId);
 }
