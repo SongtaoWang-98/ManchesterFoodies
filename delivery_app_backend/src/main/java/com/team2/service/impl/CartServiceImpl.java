@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,8 +106,10 @@ public class CartServiceImpl implements CartService {
         for(CartItemVO cartItemVO: cartItemVOList) {
             total = total.add(cartItemVO.getDishPrice());
         }
-        BigDecimal subtotal = total.multiply(BigDecimal.valueOf(restaurantInfo.getDiscount()));
-        BigDecimal cutPrice = total.subtract(subtotal);
+        BigDecimal subtotal = total.multiply(BigDecimal.valueOf(restaurantInfo.getDiscount()))
+                .setScale(2, RoundingMode.HALF_UP);
+        BigDecimal cutPrice = total.subtract(subtotal)
+                .setScale(2, RoundingMode.HALF_UP);
         DeliveryFeeContext context = new DeliveryFeeContext();
         Boolean isVip = userInfoDao.findByUserId(userId).getIsVip();
         if(isVip) context.setCalculateMethod(new VipDeliveryFee());

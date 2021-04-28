@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -57,7 +58,8 @@ public class OrderServiceImpl implements OrderService {
         }
         Integer restaurantId = dishInfoDao.findByDishId(userCartList.get(0).getDishId()).getRestaurantId();
         RestaurantInfo restaurantInfo = restaurantInfoDao.findRestaurantById(restaurantId);
-        orderTotal = orderTotal.multiply(BigDecimal.valueOf(restaurantInfo.getDiscount()));
+        orderTotal = orderTotal.multiply(BigDecimal.valueOf(restaurantInfo.getDiscount()))
+                .setScale(2, RoundingMode.HALF_UP);
         DeliveryFeeContext context = new DeliveryFeeContext();
         Boolean isVip = userInfoDao.findByUserId(userId).getIsVip();
         if(isVip) context.setCalculateMethod(new VipDeliveryFee());
