@@ -27,12 +27,12 @@ public class MenuServiceImpl implements MenuService {
     private RestaurantInfoDao restaurantInfoDao;
 
     @Override
-    public MenuVO menuShow(int id) {
+    public MenuVO menuShow(Integer restaurantId) {
         List<DishGroupVO> dishGroupVOList = new ArrayList<>();
-        List<String> groupList = dishInfoDao.findDishGroups();
+        List<String> groupList = dishInfoDao.findDishGroupsByRestaurantId(restaurantId);
         for(String s: groupList) {
             List<DishVO> dishVOList = new ArrayList<>();
-            List<DishInfo> dishInfoList = dishInfoDao.findByRestaurantIdAndDishGroup(id,s);
+            List<DishInfo> dishInfoList = dishInfoDao.findByRestaurantIdAndDishGroup(restaurantId,s);
             for(DishInfo dishInfo: dishInfoList) {
                 dishVOList.add(new DishVO(
                         dishInfo.getDishId(),
@@ -48,7 +48,7 @@ public class MenuServiceImpl implements MenuService {
             ));
         }
 
-        RestaurantInfo restaurantInfo = restaurantInfoDao.findRestaurantById(id);
+        RestaurantInfo restaurantInfo = restaurantInfoDao.findRestaurantById(restaurantId);
         return new MenuVO(
                 restaurantInfo.getRestaurantId(),
                 restaurantInfo.getRestaurantName(),

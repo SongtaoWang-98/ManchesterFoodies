@@ -5,7 +5,7 @@ import com.team2.entity.DishInfo;
 import java.util.List;
 
 public interface DishInfoDao {
-    List<String> findDishGroups();
+    List<String> findDishGroupsByRestaurantId(Integer restaurantId);
     List<DishInfo> findByRestaurantIdAndDishGroup(Integer restaurantId, String dishGroup);
     DishInfo findByDishId(Integer dishId);
 }
