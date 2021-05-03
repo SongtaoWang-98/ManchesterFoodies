@@ -36,11 +36,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public StatusCode openVip(Integer userId, String paymentMethod) {
         if(paymentMethod.equals("balance")) {
-            if (userInfoDao.findByUserId(userId).getUserBalance().doubleValue() < 10) {
+            if (userInfoDao.findByUserId(userId).getUserBalance().doubleValue() < 5.99) {
                 return StatusCode.INSUFFICIENT_BALANCE;
             }
             else {
-                new Invoker(deduceCommand).execution(userId, BigDecimal.valueOf(10));
+                new Invoker(deduceCommand).execution(userId, BigDecimal.valueOf(5.99));
             }
         }
         userInfoDao.updateIsVipByUserId(userId);
